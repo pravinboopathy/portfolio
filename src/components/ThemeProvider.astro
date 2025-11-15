@@ -6,14 +6,7 @@
  * This component should be included in the Layout.astro <head>.
  */
 import { theme } from '../config/theme';
+const cssContent = `:root{--accent-primary:${theme.primary};--accent-hover:${theme.primaryHover}}`;
 ---
 
-<style is:global define:vars={{
-  accentPrimary: theme.primary,
-  accentHover: theme.primaryHover
-}}>
-  :root {
-    --accent-primary: var(--accentPrimary);
-    --accent-hover: var(--accentHover);
-  }
-</style>
+<style set:html={cssContent}></style>
