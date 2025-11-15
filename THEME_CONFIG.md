@@ -4,12 +4,34 @@
 
 Your portfolio uses a **Kanagawa-inspired dark theme** with configurable accent colors. The theme is currently set to **Kanagawa Spring Green**.
 
-### How to Change the Accent Color
+### Method 1: Using config.json (Recommended - Coming Soon)
 
-1. Open `src/config/theme.ts`
-2. Find the line that says `export const selectedPalette: PaletteName = 'kanagawa-spring-green';`
-3. Replace `'kanagawa-spring-green'` with any of the available options below
-4. Save the file - the dev server will automatically reload with your new color!
+**Note:** Theme selector feature is planned. Once implemented, you'll be able to:
+1. Use an interactive theme selector in the sidebar to preview themes
+2. Edit `config.json` to permanently save your choice
+3. No code editing required!
+
+### Method 2: Manual Configuration (Current)
+
+**For now, to change the theme:**
+
+1. Open `config.json` in the project root (create if it doesn't exist)
+2. Add or update the theme configuration:
+   ```json
+   {
+     "theme": {
+       "selectedPalette": "kanagawa-spring-green"
+     }
+   }
+   ```
+3. Replace `'kanagawa-spring-green'` with any available palette (see below)
+4. Restart the dev server to see changes
+
+**Alternative (temporary):**
+1. Edit `src/config/theme.ts` directly
+2. Find: `export const selectedPalette: PaletteName = 'kanagawa-spring-green';`
+3. Replace with your choice
+4. Save - dev server will auto-reload
 
 ### Available Color Palettes
 
@@ -37,16 +59,31 @@ Modern Tailwind-inspired accent colors:
 
 ### Example Configuration
 
+**config.json:**
+```json
+{
+  "theme": {
+    "selectedPalette": "kanagawa-crystal-blue"
+  }
+}
+```
+
+**Or in src/config/theme.ts (temporary):**
 ```typescript
-// In src/config/theme.ts
 export const selectedPalette: PaletteName = 'kanagawa-crystal-blue';
 ```
 
 ### Preview All Colors
 
-Visit `/colors` in your browser while the dev server is running to see all 14 color options with live examples of links, buttons, and text.
+**Current:** Visit `/colors` in your browser while the dev server is running to see all 14 color options with live examples.
 
 Example: `http://localhost:4321/colors`
+
+**Coming Soon:** An interactive theme selector will be added to the sidebar, allowing you to:
+- Preview all 14 themes instantly
+- Switch between themes with one click
+- Save your preference to localStorage
+- Copy theme name to add to `config.json` for permanent use
 
 ## Base Theme Colors
 
