@@ -1,0 +1,19 @@
+---
+/**
+ * Theme Provider Component
+ *
+ * Injects the selected color palette from theme.ts into CSS variables.
+ * This component should be included in the Layout.astro <head>.
+ */
+import { theme } from '../config/theme';
+---
+
+<style is:global define:vars={{
+  accentPrimary: theme.primary,
+  accentHover: theme.primaryHover
+}}>
+  :root {
+    --accent-primary: var(--accentPrimary);
+    --accent-hover: var(--accentHover);
+  }
+</style>
