@@ -1,0 +1,272 @@
+---
+/**
+ * Vertical Sidebar Navigation
+ *
+ * Desktop: Fixed left sidebar
+ * Mobile: Collapsible hamburger menu
+ */
+---
+
+<div class="sidebar-container">
+  <!-- Mobile Hamburger Button -->
+  <button
+    id="mobile-menu-button"
+    class="mobile-menu-btn"
+    aria-label="Toggle navigation menu"
+  >
+    <svg
+      class="hamburger-icon"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 6h16M4 12h16M4 18h16"
+      />
+    </svg>
+    <svg
+      class="close-icon hidden"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M6 18L18 6M6 6l12 12"
+      />
+    </svg>
+  </button>
+
+  <!-- Sidebar Overlay (mobile only) -->
+  <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+  <!-- Sidebar Navigation -->
+  <nav id="sidebar" class="sidebar">
+    <div class="sidebar-content">
+      <!-- Logo/Name -->
+      <div class="sidebar-header">
+        <a href="/" class="logo-link">
+          <span class="logo-text">Portfolio</span>
+        </a>
+      </div>
+
+      <!-- Navigation Links -->
+      <ul class="nav-list">
+        <li>
+          <a href="/" class="nav-link">About</a>
+        </li>
+        <li>
+          <a href="/#projects" class="nav-link">Projects</a>
+        </li>
+        <li>
+          <a href="/blog" class="nav-link">Blog</a>
+        </li>
+        <li>
+          <a href="/#contact" class="nav-link">Contact</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<style>
+  /* Container */
+  .sidebar-container {
+    position: relative;
+  }
+
+  /* Mobile Menu Button */
+  .mobile-menu-btn {
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    z-index: 1000;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: transparent;
+    border: 1px solid var(--border-default);
+    border-radius: 4px;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s ease;
+  }
+
+  .mobile-menu-btn:hover {
+    border-color: var(--accent-primary);
+  }
+
+  .mobile-menu-btn svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .mobile-menu-btn.active .hamburger-icon {
+    display: none;
+  }
+
+  .mobile-menu-btn.active .close-icon {
+    display: block !important;
+  }
+
+  /* Show mobile button only on small screens */
+  @media (min-width: 768px) {
+    .mobile-menu-btn {
+      display: none;
+    }
+  }
+
+  /* Sidebar Overlay (mobile only) */
+  .sidebar-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .sidebar-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  @media (min-width: 768px) {
+    .sidebar-overlay {
+      display: none;
+    }
+  }
+
+  /* Sidebar */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 220px;
+    background: var(--bg-primary);
+    border-right: 1px solid var(--border-default);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+  }
+
+  /* Mobile: hidden by default, slides in when active */
+  @media (max-width: 767px) {
+    .sidebar {
+      transform: translateX(-100%);
+    }
+
+    .sidebar.active {
+      transform: translateX(0);
+    }
+  }
+
+  /* Sidebar Content */
+  .sidebar-content {
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  /* Logo/Header */
+  .sidebar-header {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-default);
+  }
+
+  .logo-link {
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: color 0.2s ease;
+  }
+
+  .logo-link:hover {
+    text-decoration: none;
+    color: var(--accent-primary);
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  /* Navigation List */
+  .nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .nav-link {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+    display: block;
+    padding-left: 0;
+  }
+
+  .nav-link:hover {
+    color: var(--accent-primary);
+    text-decoration: none;
+    padding-left: 0.5rem;
+  }
+</style>
+
+<script>
+  // Mobile menu toggle
+  const menuButton = document.getElementById('mobile-menu-button');
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+
+  function toggleMenu() {
+    menuButton?.classList.toggle('active');
+    sidebar?.classList.toggle('active');
+    overlay?.classList.toggle('active');
+  }
+
+  function closeMenu() {
+    menuButton?.classList.remove('active');
+    sidebar?.classList.remove('active');
+    overlay?.classList.remove('active');
+  }
+
+  // Toggle menu on button click
+  menuButton?.addEventListener('click', toggleMenu);
+
+  // Close menu when overlay is clicked
+  overlay?.addEventListener('click', closeMenu);
+
+  // Close menu when a nav link is clicked (mobile only)
+  const navLinks = sidebar?.querySelectorAll('.nav-link');
+  navLinks?.forEach(link => {
+    link.addEventListener('click', () => {
+      // Only close on mobile
+      if (window.innerWidth < 768) {
+        closeMenu();
+      }
+    });
+  });
+
+  // Close menu on escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeMenu();
+    }
+  });
+</script>

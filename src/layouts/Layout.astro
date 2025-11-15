@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import ThemeProvider from '../components/ThemeProvider.astro';
+import Sidebar from '../components/Sidebar.astro';
 
 interface Props {
   title: string;
@@ -25,27 +27,29 @@ const { title, description = 'Personal portfolio showcasing programming projects
 
     <title>{title}</title>
 
-    <!-- Dark mode script (runs before page render to prevent flash) -->
-    <script is:inline>
-      const theme = (() => {
-        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-          return localStorage.getItem('theme');
-        }
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          return 'dark';
-        }
-        return 'light';
-      })();
-
-      if (theme === 'dark') {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-      window.localStorage.setItem('theme', theme);
-    </script>
+    <!-- Theme configuration -->
+    <ThemeProvider />
   </head>
   <body>
-    <slot />
+    <Sidebar />
+    <main class="main-content">
+      <slot />
+    </main>
   </body>
 </html>
+
+<style>
+  /* Main content area - offset for sidebar */
+  .main-content {
+    margin-left: 0;
+    min-height: 100vh;
+    transition: margin-left 0.3s ease;
+  }
+
+  /* Desktop: offset for fixed sidebar */
+  @media (min-width: 768px) {
+    .main-content {
+      margin-left: 220px;
+    }
+  }
+</style>
