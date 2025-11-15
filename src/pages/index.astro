@@ -1,6 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { getCollection } from 'astro:content';
 
@@ -11,147 +10,294 @@ const projects = (await getCollection('projects'))
 ---
 
 <Layout title="Your Name - Software Engineer">
-  <div class="min-h-screen flex flex-col">
-    <Header />
+  <div class="page-container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1 class="hero-title">Hi, I'm Your Name</h1>
+      <p class="hero-subtitle">
+        Software Engineer building cool projects and sharing what I learn
+      </p>
+      <div class="hero-links">
+        <a href="#projects">View Projects</a>
+        <span class="separator">·</span>
+        <a href="/blog">Read Blog</a>
+      </div>
+    </section>
 
-    <main class="flex-1">
-      <!-- Hero Section -->
-      <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
-        <div class="text-center">
-          <h1 class="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
-            Hi, I'm Your Name
-          </h1>
-          <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-            Software Engineer building cool projects and sharing what I learn
-          </p>
-          <div class="flex gap-4 justify-center">
-            <a
-              href="#projects"
-              class="px-6 py-3 bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
-            >
-              View Projects
-            </a>
-            <a
-              href="/blog"
-              class="px-6 py-3 border border-gray-300 dark:border-gray-700 hover:border-blue-500 dark:hover:border-blue-500 rounded-lg transition-colors font-medium"
-            >
-              Read Blog
-            </a>
-          </div>
-        </div>
-      </section>
+    <!-- About Section -->
+    <section class="section">
+      <h2 class="section-title">About</h2>
+      <div class="about-content">
+        <p>
+          I'm a passionate software engineer who loves building things and solving problems.
+          My interests span across web development, system design, and exploring new technologies.
+        </p>
+        <p>
+          When I'm not coding, you'll find me learning about new frameworks, contributing to
+          open source, or writing about my experiences on this blog.
+        </p>
+        <p>
+          I'm always open to interesting conversations and collaboration opportunities. Feel
+          free to reach out!
+        </p>
+      </div>
+    </section>
 
-      <!-- About Section -->
-      <section class="bg-gray-50 dark:bg-gray-800/50 py-20">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">About Me</h2>
-          <div class="max-w-3xl mx-auto">
-            <p class="text-lg text-gray-600 dark:text-gray-400 mb-4">
-              I'm a passionate software engineer who loves building things and solving problems.
-              My interests span across web development, system design, and exploring new technologies.
-            </p>
-            <p class="text-lg text-gray-600 dark:text-gray-400 mb-4">
-              When I'm not coding, you'll find me learning about new frameworks, contributing to
-              open source, or writing about my experiences on this blog.
-            </p>
-            <p class="text-lg text-gray-600 dark:text-gray-400">
-              I'm always open to interesting conversations and collaboration opportunities. Feel
-              free to reach out!
-            </p>
-          </div>
-        </div>
-      </section>
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+      <h2 class="section-title">Projects</h2>
+      <p class="section-subtitle">A selection of side projects I've been working on</p>
 
-      <!-- Projects Section -->
-      <section id="projects" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div class="mb-12">
-          <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
-          <p class="text-lg text-gray-600 dark:text-gray-400">
-            A selection of side projects I've been working on
-          </p>
-        </div>
+      {projects.length > 0 ? (
+        <div class="projects-grid">
+          {projects.map((project) => (
+            <article class="project-card">
+              {project.data.image && (
+                <img
+                  src={project.data.image}
+                  alt={project.data.title}
+                  class="project-image"
+                />
+              )}
+              <h3 class="project-title">{project.data.title}</h3>
+              <p class="project-description">
+                {project.data.description}
+              </p>
 
-        {projects.length > 0 ? (
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project) => (
-              <article class="border border-gray-200 dark:border-gray-800 rounded-lg p-6 hover:border-blue-500 dark:hover:border-blue-500 transition-colors">
-                {project.data.image && (
-                  <img
-                    src={project.data.image}
-                    alt={project.data.title}
-                    class="w-full h-48 object-cover rounded-lg mb-4"
-                  />
+              <!-- Tech Stack -->
+              <div class="tech-stack">
+                {project.data.tech.map((tech: string) => (
+                  <span class="tech-tag">{tech}</span>
+                ))}
+              </div>
+
+              <!-- Links -->
+              <div class="project-links">
+                {project.data.demoUrl && (
+                  <a
+                    href={project.data.demoUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Demo →
+                  </a>
                 )}
-                <h3 class="text-xl font-bold mb-2">{project.data.title}</h3>
-                <p class="text-gray-600 dark:text-gray-400 mb-4">
-                  {project.data.description}
-                </p>
-
-                <!-- Tech Stack -->
-                <div class="flex flex-wrap gap-2 mb-4">
-                  {project.data.tech.map((tech: string) => (
-                    <span class="px-2 py-1 text-xs bg-gray-100 dark:bg-gray-800 rounded">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                <!-- Links -->
-                <div class="flex gap-4">
-                  {project.data.demoUrl && (
-                    <a
-                      href={project.data.demoUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="text-blue-500 hover:text-blue-600 dark:hover:text-blue-400 font-medium text-sm"
-                    >
-                      View Demo →
-                    </a>
-                  )}
-                  {project.data.githubUrl && (
-                    <a
-                      href={project.data.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 font-medium text-sm"
-                    >
-                      GitHub →
-                    </a>
-                  )}
-                </div>
-              </article>
-            ))}
-          </div>
-        ) : (
-          <div class="text-center py-12 border border-dashed border-gray-300 dark:border-gray-700 rounded-lg">
-            <p class="text-gray-600 dark:text-gray-400">
-              No projects yet. Add your first project in <code class="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">src/content/projects/</code>
-            </p>
-          </div>
-        )}
-      </section>
-
-      <!-- Contact Section -->
-      <section id="contact" class="bg-gray-50 dark:bg-gray-800/50 py-20">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 class="text-3xl md:text-4xl font-bold mb-4">Let's Connect</h2>
-          <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-            I'm always interested in hearing about new opportunities, collaborations,
-            or just having a chat about technology.
-          </p>
-          <a
-            href="mailto:your.email@example.com"
-            class="inline-flex items-center gap-2 px-8 py-4 bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 text-white rounded-lg transition-colors text-lg font-medium"
-          >
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-            Send me an email
-          </a>
+                {project.data.githubUrl && (
+                  <a
+                    href={project.data.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub →
+                  </a>
+                )}
+              </div>
+            </article>
+          ))}
         </div>
-      </section>
-    </main>
+      ) : (
+        <div class="empty-state">
+          <p>
+            No projects yet. Add your first project in <code>src/content/projects/</code>
+          </p>
+        </div>
+      )}
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <h2 class="section-title">Let's Connect</h2>
+      <p class="section-subtitle">
+        I'm always interested in hearing about new opportunities, collaborations,
+        or just having a chat about technology.
+      </p>
+      <a href="mailto:your.email@example.com" class="contact-link">
+        Send me an email →
+      </a>
+    </section>
 
     <Footer />
   </div>
 </Layout>
+
+<style>
+  .page-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+
+  /* Hero Section */
+  .hero {
+    padding: 6rem 0 8rem;
+    text-align: left;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    line-height: 1.2;
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    max-width: 600px;
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-size: 1.125rem;
+  }
+
+  .hero-links .separator {
+    color: var(--text-muted);
+  }
+
+  /* Section Styles */
+  .section {
+    padding: 4rem 0;
+    border-top: 1px solid var(--border-default);
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+  }
+
+  /* About Section */
+  .about-content {
+    max-width: 700px;
+  }
+
+  .about-content p {
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+  }
+
+  .about-content p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Projects Grid */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  @media (min-width: 640px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .project-card {
+    border: 1px solid var(--border-default);
+    padding: 1.5rem;
+    border-radius: 4px;
+    transition: border-color 0.2s ease;
+  }
+
+  .project-card:hover {
+    border-color: var(--accent-primary);
+  }
+
+  .project-image {
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+
+  .project-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+  }
+
+  .project-description {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .tech-tag {
+    font-size: 0.875rem;
+    padding: 0.25rem 0.75rem;
+    background: var(--bg-secondary);
+    border-radius: 4px;
+    color: var(--text-secondary);
+  }
+
+  .project-links {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.9375rem;
+  }
+
+  /* Contact Section */
+  .contact-link {
+    display: inline-block;
+    font-size: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  /* Empty State */
+  .empty-state {
+    padding: 3rem;
+    text-align: center;
+    border: 1px dashed var(--border-default);
+    border-radius: 4px;
+    color: var(--text-secondary);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .page-container {
+      padding: 2rem 1.5rem;
+    }
+
+    .hero {
+      padding: 4rem 0 6rem;
+    }
+
+    .hero-title {
+      font-size: 2.25rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+    }
+
+    .section {
+      padding: 3rem 0;
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
