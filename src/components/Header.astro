@@ -1,0 +1,26 @@
+---
+import DarkModeToggle from './DarkModeToggle';
+---
+
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
+  <nav class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="/" class="text-xl font-bold hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
+        Portfolio
+      </a>
+
+      <div class="flex items-center gap-6">
+        <a href="/#projects" class="hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
+          Projects
+        </a>
+        <a href="/blog" class="hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
+          Blog
+        </a>
+        <a href="/#contact" class="hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
+          Contact
+        </a>
+        <DarkModeToggle client:load />
+      </div>
+    </div>
+  </nav>
+</header>
