@@ -105,26 +105,34 @@ export const colorPalettes = {
 
 export type PaletteName = keyof typeof colorPalettes;
 
+// Load configuration from config.json
+let configData: { theme?: { selectedPalette?: string } } = { theme: { selectedPalette: 'kanagawa-spring-green' } };
+try {
+  configData = await import('../../config.json');
+} catch (error) {
+  console.warn('config.json not found, using default theme');
+}
+
 /**
- * SELECT YOUR COLOR PALETTE HERE
+ * Selected color palette (loaded from config.json)
  *
- * Options:
+ * To change the theme permanently:
+ * 1. Edit config.json in the project root
+ * 2. Change the "theme.selectedPalette" value
+ * 3. Restart the dev server
+ *
+ * Available palettes:
  * - 'kanagawa-spring-green' (default)
  * - 'kanagawa-crystal-blue'
  * - 'kanagawa-autumn-yellow'
  * - 'kanagawa-sakura-pink'
  * - 'kanagawa-wave-aqua'
- * - 'amber'
- * - 'teal'
- * - 'slate'
- * - 'orange'
- * - 'indigo'
- * - 'emerald'
- * - 'rose'
- * - 'sky'
- * - 'lime'
+ * - 'amber', 'teal', 'slate', 'orange', 'indigo', 'emerald', 'rose', 'sky', 'lime'
  */
-export const selectedPalette: PaletteName = 'kanagawa-spring-green';
+export const selectedPalette: PaletteName =
+  (configData?.theme?.selectedPalette && configData.theme.selectedPalette in colorPalettes)
+    ? configData.theme.selectedPalette as PaletteName
+    : 'kanagawa-spring-green';
 
 // Export the active color palette
 export const theme = colorPalettes[selectedPalette];
