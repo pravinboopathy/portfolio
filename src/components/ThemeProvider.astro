@@ -2,11 +2,24 @@
 /**
  * Theme Provider Component
  *
- * Injects the selected color palette from theme.ts into CSS variables.
+ * Injects the selected theme from theme.ts into CSS variables.
  * This component should be included in the Layout.astro <head>.
  */
 import { theme } from '../config/theme';
-const cssContent = `:root{--accent-primary:${theme.primary};--accent-hover:${theme.primaryHover}}`;
+
+const cssContent = `:root{
+--bg-primary:${theme.background};
+--bg-secondary:${theme.backgroundAlt};
+--bg-tertiary:${theme.backgroundTertiary};
+--bg-dark:${theme.backgroundDark};
+--text-primary:${theme.text};
+--text-secondary:${theme.textSecondary};
+--text-muted:${theme.textMuted};
+--accent-primary:${theme.accent};
+--accent-hover:${theme.accentHover};
+--border-default:${theme.border};
+--border-hover:${theme.borderHover};
+}`;
 ---
 
 <style set:html={cssContent}></style>

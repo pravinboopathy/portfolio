@@ -1,32 +1,36 @@
 @import 'tailwindcss';
 
 /**
- * Kanagawa-inspired Dark Theme
+ * Global Theme Variables
  *
- * Color palette is configurable via src/config/theme.ts
- * Change selectedPalette to switch accent colors
+ * Complete theme (background, text, and accent colors) is configurable via:
+ * - config.json for permanent changes
+ * - Theme selector for live preview
+ *
+ * Default values below are overridden by ThemeProvider.astro at build time
  */
 
 :root {
-  /* Kanagawa Base Colors - inspired by rebelot/kanagawa.nvim */
-  --bg-primary: #1F1F28;      /* sumiInk1 - main background */
-  --bg-secondary: #2A2A37;    /* sumiInk2 - lighter background for cards */
-  --bg-tertiary: #363646;     /* sumiInk3 - hover/active states */
-  --bg-dark: #16161D;         /* sumiInk0 - code blocks, dark elements */
+  /* Background colors - set by theme */
+  --bg-primary: #1F1F28;
+  --bg-secondary: #2A2A37;
+  --bg-tertiary: #363646;
+  --bg-dark: #16161D;
 
-  --text-primary: #DCD7BA;    /* fujiWhite - main text */
-  --text-secondary: #C8C093;  /* oldWhite - secondary text */
-  --text-muted: #727169;      /* muted text */
+  /* Text colors - set by theme */
+  --text-primary: #DCD7BA;
+  --text-secondary: #C8C093;
+  --text-muted: #727169;
 
-  /* Accent colors - set via theme.ts (Kanagawa Spring Green by default) */
+  /* Accent colors - set by theme */
   --accent-primary: #98BB6C;
   --accent-hover: #76946A;
 
-  /* Border colors */
+  /* Border colors - set by theme */
   --border-default: #2A2A37;
   --border-hover: #363646;
 
-  /* Typography */
+  /* Typography - not theme-dependent */
   --font-base: 20px;
   --line-height: 1.75;
   --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;

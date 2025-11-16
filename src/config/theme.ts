@@ -1,112 +1,147 @@
 /**
  * Theme Configuration
  *
- * This file controls the color palette for the entire site.
- * Change the `selectedPalette` to switch between different accent colors.
+ * This file controls the complete color scheme for the entire site.
+ * Each theme defines background, text, and accent colors.
  */
 
 export type ColorPalette = {
   name: string;
-  primary: string;      // Main accent color for links and headings
-  primaryHover: string; // Hover state for links and buttons
   description: string;
+
+  // Background colors
+  background: string;         // Main background
+  backgroundAlt: string;      // Cards, sidebar
+  backgroundTertiary: string; // Hover states
+  backgroundDark: string;     // Code blocks
+
+  // Text colors
+  text: string;               // Main body text
+  textSecondary: string;      // Secondary/muted text
+  textMuted: string;          // Very muted text
+
+  // Accent colors
+  accent: string;             // Links, highlights
+  accentHover: string;        // Hover states
+
+  // Border colors (derived from background)
+  border: string;
+  borderHover: string;
 };
 
-// All available color palettes
+// Complete theme presets - each defines a full color scheme
 export const colorPalettes = {
-  // Kanagawa Theme Colors (inspired by rebelot/kanagawa.nvim)
-  'kanagawa-spring-green': {
-    name: 'Kanagawa Spring Green',
-    primary: '#98BB6C',
-    primaryHover: '#76946A',
-    description: 'Natural, earthy green inspired by Japanese landscapes'
+  'kanagawa-dark': {
+    name: 'Kanagawa Dark',
+    description: 'Natural, earthy theme inspired by Japanese landscapes',
+    background: '#1F1F28',
+    backgroundAlt: '#2A2A37',
+    backgroundTertiary: '#363646',
+    backgroundDark: '#16161D',
+    text: '#DCD7BA',
+    textSecondary: '#C8C093',
+    textMuted: '#727169',
+    accent: '#98BB6C',
+    accentHover: '#76946A',
+    border: '#2A2A37',
+    borderHover: '#363646',
   },
-  'kanagawa-crystal-blue': {
-    name: 'Kanagawa Crystal Blue',
-    primary: '#7E9CD8',
-    primaryHover: '#9CABCA',
-    description: 'Soft, muted blue that\'s calming and sophisticated'
+  'kanagawa-blue': {
+    name: 'Kanagawa Blue',
+    description: 'Soft, muted blue with warm text tones',
+    background: '#1F1F28',
+    backgroundAlt: '#2A2A37',
+    backgroundTertiary: '#363646',
+    backgroundDark: '#16161D',
+    text: '#DCD7BA',
+    textSecondary: '#C8C093',
+    textMuted: '#727169',
+    accent: '#7E9CD8',
+    accentHover: '#9CABCA',
+    border: '#2A2A37',
+    borderHover: '#363646',
   },
-  'kanagawa-autumn-yellow': {
-    name: 'Kanagawa Autumn Yellow',
-    primary: '#DCA561',
-    primaryHover: '#C0A36E',
-    description: 'Warm, golden yellow like autumn leaves'
+  'tokyo-night': {
+    name: 'Tokyo Night',
+    description: 'Deep blue background with bright cyan accents',
+    background: '#1a1b26',
+    backgroundAlt: '#24283b',
+    backgroundTertiary: '#2f3549',
+    backgroundDark: '#16161e',
+    text: '#c0caf5',
+    textSecondary: '#a9b1d6',
+    textMuted: '#565f89',
+    accent: '#7aa2f7',
+    accentHover: '#7dcfff',
+    border: '#24283b',
+    borderHover: '#2f3549',
   },
-  'kanagawa-sakura-pink': {
-    name: 'Kanagawa Sakura Pink',
-    primary: '#D27E99',
-    primaryHover: '#E46876',
-    description: 'Delicate cherry blossom pink, uniquely Japanese'
+  'gruvbox-dark': {
+    name: 'Gruvbox Dark',
+    description: 'Warm, retro-inspired theme with earthy tones',
+    background: '#282828',
+    backgroundAlt: '#3c3836',
+    backgroundTertiary: '#504945',
+    backgroundDark: '#1d2021',
+    text: '#ebdbb2',
+    textSecondary: '#d5c4a1',
+    textMuted: '#928374',
+    accent: '#fabd2f',
+    accentHover: '#fe8019',
+    border: '#3c3836',
+    borderHover: '#504945',
   },
-  'kanagawa-wave-aqua': {
-    name: 'Kanagawa Wave Aqua',
-    primary: '#7AA89F',
-    primaryHover: '#6A9589',
-    description: 'Ocean-inspired teal, straight from the great wave'
+  'nord': {
+    name: 'Nord',
+    description: 'Arctic, bluish theme with cool tones',
+    background: '#2e3440',
+    backgroundAlt: '#3b4252',
+    backgroundTertiary: '#434c5e',
+    backgroundDark: '#2b303b',
+    text: '#eceff4',
+    textSecondary: '#d8dee9',
+    textMuted: '#4c566a',
+    accent: '#88c0d0',
+    accentHover: '#8fbcbb',
+    border: '#3b4252',
+    borderHover: '#434c5e',
   },
-
-  // Standard Tailwind-inspired Colors
-  'amber': {
-    name: 'Warm Amber',
-    primary: '#fbbf24',
-    primaryHover: '#f59e0b',
-    description: 'Adds warmth and personality while maintaining minimalism'
+  'dracula': {
+    name: 'Dracula',
+    description: 'Dark purple theme with vibrant pink accents',
+    background: '#282a36',
+    backgroundAlt: '#343746',
+    backgroundTertiary: '#44475a',
+    backgroundDark: '#21222c',
+    text: '#f8f8f2',
+    textSecondary: '#e6e6e6',
+    textMuted: '#6272a4',
+    accent: '#ff79c6',
+    accentHover: '#bd93f9',
+    border: '#343746',
+    borderHover: '#44475a',
   },
-  'teal': {
-    name: 'Cool Teal',
-    primary: '#2dd4bf',
-    primaryHover: '#14b8a6',
-    description: 'Modern, tech-forward, professional'
-  },
-  'slate': {
-    name: 'Neutral Slate',
-    primary: '#94a3b8',
-    primaryHover: '#cbd5e1',
-    description: 'Maximum minimalism with almost no color at all'
-  },
-  'orange': {
-    name: 'Vibrant Orange',
-    primary: '#fb923c',
-    primaryHover: '#f97316',
-    description: 'Energetic and bold, perfect for standing out'
-  },
-  'indigo': {
-    name: 'Elegant Indigo',
-    primary: '#818cf8',
-    primaryHover: '#6366f1',
-    description: 'Sophisticated purple-blue, creative yet professional'
-  },
-  'emerald': {
-    name: 'Fresh Emerald',
-    primary: '#34d399',
-    primaryHover: '#10b981',
-    description: 'Natural and calming green'
-  },
-  'rose': {
-    name: 'Warm Rose',
-    primary: '#fb7185',
-    primaryHover: '#f43f5e',
-    description: 'Unique and inviting pink-red'
-  },
-  'sky': {
-    name: 'Bright Sky',
-    primary: '#38bdf8',
-    primaryHover: '#0ea5e9',
-    description: 'Light and airy blue, open and approachable'
-  },
-  'lime': {
-    name: 'Electric Lime',
-    primary: '#a3e635',
-    primaryHover: '#84cc16',
-    description: 'High-energy yellow-green'
+  'monokai': {
+    name: 'Monokai',
+    description: 'Classic dark theme with yellow-green accents',
+    background: '#272822',
+    backgroundAlt: '#3e3d32',
+    backgroundTertiary: '#49483e',
+    backgroundDark: '#1e1f1c',
+    text: '#f8f8f2',
+    textSecondary: '#cfcfc2',
+    textMuted: '#75715e',
+    accent: '#a6e22e',
+    accentHover: '#e6db74',
+    border: '#3e3d32',
+    borderHover: '#49483e',
   },
 } as const;
 
 export type PaletteName = keyof typeof colorPalettes;
 
 // Load configuration from config.json
-let configData: { theme?: { selectedPalette?: string } } = { theme: { selectedPalette: 'kanagawa-spring-green' } };
+let configData: { theme?: { selectedTheme?: string } } = { theme: { selectedTheme: 'kanagawa-dark' } };
 try {
   configData = await import('../../config.json');
 } catch (error) {
@@ -114,34 +149,26 @@ try {
 }
 
 /**
- * Selected color palette (loaded from config.json)
+ * Selected theme (loaded from config.json)
  *
  * To change the theme permanently:
  * 1. Edit config.json in the project root
- * 2. Change the "theme.selectedPalette" value
+ * 2. Change the "theme.selectedTheme" value
  * 3. Restart the dev server
  *
- * Available palettes:
- * - 'kanagawa-spring-green' (default)
- * - 'kanagawa-crystal-blue'
- * - 'kanagawa-autumn-yellow'
- * - 'kanagawa-sakura-pink'
- * - 'kanagawa-wave-aqua'
- * - 'amber', 'teal', 'slate', 'orange', 'indigo', 'emerald', 'rose', 'sky', 'lime'
+ * Available themes:
+ * - 'kanagawa-dark' (default) - Natural earthy theme
+ * - 'kanagawa-blue' - Muted blue with warm tones
+ * - 'tokyo-night' - Deep blue with cyan accents
+ * - 'gruvbox-dark' - Warm retro theme
+ * - 'nord' - Arctic bluish theme
+ * - 'dracula' - Purple with pink accents
+ * - 'monokai' - Classic dark theme
  */
-export const selectedPalette: PaletteName =
-  (configData?.theme?.selectedPalette && configData.theme.selectedPalette in colorPalettes)
-    ? configData.theme.selectedPalette as PaletteName
-    : 'kanagawa-spring-green';
+export const selectedTheme: PaletteName =
+  (configData?.theme?.selectedTheme && configData.theme.selectedTheme in colorPalettes)
+    ? configData.theme.selectedTheme as PaletteName
+    : 'kanagawa-dark';
 
-// Export the active color palette
-export const theme = colorPalettes[selectedPalette];
-
-// Kanagawa base colors (used regardless of accent color)
-export const kanagawaColors = {
-  background: '#1F1F28',      // sumiInk1 - main background
-  backgroundAlt: '#2A2A37',   // sumiInk2 - lighter background
-  backgroundDark: '#16161D',  // sumiInk0 - dark background for code blocks
-  foreground: '#DCD7BA',      // fujiWhite - main text
-  foregroundAlt: '#C8C093',   // oldWhite - secondary text
-};
+// Export the active theme
+export const theme = colorPalettes[selectedTheme];

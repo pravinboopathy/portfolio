@@ -76,27 +76,11 @@
   background: var(--bg-secondary);
   border: 1px solid var(--border-default);
   border-radius: 4px;
-  max-height: 320px;
+  max-height: 280px;
   overflow-y: auto;
   z-index: 1000;
   box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.theme-group {
-  padding: 0.5rem 0;
-}
-
-.theme-group:not(:last-child) {
-  border-bottom: 1px solid var(--border-default);
-}
-
-.theme-group-label {
-  padding: 0.25rem 0.75rem;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  padding: 0.25rem 0;
 }
 
 .theme-option {
