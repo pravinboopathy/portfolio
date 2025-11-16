@@ -2,12 +2,8 @@
   "theme": {
     "selectedTheme": "kanagawa-blue"
   },
-  "site": {
-    "name": "Your Name",
-    "title": "Software Engineer",
-    "email": "boopathypravin@gmail.com"
-  },
   "social": {
+    "email": "boopathypravin@gmail.com",
     "github": "https://github.com/pravinboopathy",
     "linkedin": "https://linkedin.com/in/pravinboopathy",
     "twitter": "https://twitter.com/yourusername"
