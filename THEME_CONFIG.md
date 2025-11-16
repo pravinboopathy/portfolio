@@ -1,123 +1,177 @@
 # Theme Configuration Guide
 
-## Changing Your Accent Color
+## Overview
 
-Your portfolio uses a **Kanagawa-inspired dark theme** with configurable accent colors. The theme is currently set to **Kanagawa Spring Green**.
+Your portfolio uses a complete theming system with 7 curated dark themes. Each theme defines background colors, text colors, accent colors, and borders for a cohesive look.
 
-### Method 1: Using config.json (Recommended - Coming Soon)
+## Changing Your Theme
 
-**Note:** Theme selector feature is planned. Once implemented, you'll be able to:
-1. Use an interactive theme selector in the sidebar to preview themes
-2. Edit `config.json` to permanently save your choice
-3. No code editing required!
+Edit `config.json` in the project root:
 
-### Method 2: Manual Configuration (Current)
-
-**For now, to change the theme:**
-
-1. Open `config.json` in the project root (create if it doesn't exist)
-2. Add or update the theme configuration:
-   ```json
-   {
-     "theme": {
-       "selectedPalette": "kanagawa-spring-green"
-     }
-   }
-   ```
-3. Replace `'kanagawa-spring-green'` with any available palette (see below)
-4. Restart the dev server to see changes
-
-**Alternative (temporary):**
-1. Edit `src/config/theme.ts` directly
-2. Find: `export const selectedPalette: PaletteName = 'kanagawa-spring-green';`
-3. Replace with your choice
-4. Save - dev server will auto-reload
-
-### Available Color Palettes
-
-#### Kanagawa Theme Colors
-These colors are from the authentic Kanagawa Neovim theme palette:
-
-- `'kanagawa-spring-green'` - Natural, earthy green (#98BB6C) **← Current**
-- `'kanagawa-crystal-blue'` - Soft, muted blue (#7E9CD8)
-- `'kanagawa-autumn-yellow'` - Warm, golden yellow (#DCA561)
-- `'kanagawa-sakura-pink'` - Delicate cherry blossom pink (#D27E99)
-- `'kanagawa-wave-aqua'` - Ocean-inspired teal (#7AA89F)
-
-#### Standard Colors
-Modern Tailwind-inspired accent colors:
-
-- `'amber'` - Warm amber (#fbbf24)
-- `'teal'` - Cool teal (#2dd4bf)
-- `'slate'` - Neutral slate (#94a3b8) - maximum minimalism
-- `'orange'` - Vibrant orange (#fb923c)
-- `'indigo'` - Elegant indigo (#818cf8)
-- `'emerald'` - Fresh emerald (#34d399)
-- `'rose'` - Warm rose (#fb7185)
-- `'sky'` - Bright sky (#38bdf8)
-- `'lime'` - Electric lime (#a3e635)
-
-### Example Configuration
-
-**config.json:**
 ```json
 {
   "theme": {
-    "selectedPalette": "kanagawa-crystal-blue"
+    "selectedTheme": "kanagawa-blue"
   }
 }
 ```
 
-**Or in src/config/theme.ts (temporary):**
-```typescript
-export const selectedPalette: PaletteName = 'kanagawa-crystal-blue';
+Replace `"kanagawa-blue"` with any available theme (see below). Restart the dev server to see changes.
+
+## Available Themes
+
+### Kanagawa Dark
+**Key:** `kanagawa-dark`
+
+Inspired by "The Great Wave off Kanagawa" painting. Natural, earthy theme with warm beige text and green accents.
+
+- Background: `#1F1F28` (dark charcoal)
+- Text: `#DCD7BA` (warm beige)
+- Accent: `#98BB6C` (spring green)
+
+### Kanagawa Blue
+**Key:** `kanagawa-blue`
+
+Same Kanagawa base with soft, muted blue accents. Calming and sophisticated.
+
+- Background: `#1F1F28` (dark charcoal)
+- Text: `#DCD7BA` (warm beige)
+- Accent: `#7E9CD8` (crystal blue)
+
+### Tokyo Night
+**Key:** `tokyo-night`
+
+Deep blue background with bright cyan accents. Modern and vibrant.
+
+- Background: `#1a1b26` (deep blue-black)
+- Text: `#c0caf5` (soft lavender white)
+- Accent: `#7aa2f7` (bright blue)
+
+### Gruvbox Dark
+**Key:** `gruvbox-dark`
+
+Warm, retro-inspired theme with earthy tones and orange/yellow accents.
+
+- Background: `#282828` (warm dark)
+- Text: `#ebdbb2` (cream)
+- Accent: `#fabd2f` (golden yellow)
+
+### Nord
+**Key:** `nord`
+
+Arctic, north-bluish theme with cool, frost-inspired colors.
+
+- Background: `#2e3440` (polar night)
+- Text: `#eceff4` (snow storm white)
+- Accent: `#88c0d0` (frost blue)
+
+### Dracula
+**Key:** `dracula`
+
+Dark purple theme with vibrant pink accents. Popular among developers.
+
+- Background: `#282a36` (dark purple)
+- Text: `#f8f8f2` (white)
+- Accent: `#ff79c6` (pink)
+
+### Monokai
+**Key:** `monokai`
+
+Classic dark theme with bright yellow-green accents. Familiar to Sublime Text users.
+
+- Background: `#272822` (almost black)
+- Text: `#f8f8f2` (white)
+- Accent: `#a6e22e` (lime green)
+
+## Example Configurations
+
+**Kanagawa Blue (default):**
+```json
+{
+  "theme": {
+    "selectedTheme": "kanagawa-blue"
+  }
+}
 ```
 
-### Preview All Colors
+**Tokyo Night:**
+```json
+{
+  "theme": {
+    "selectedTheme": "tokyo-night"
+  }
+}
+```
 
-**Current:** Visit `/colors` in your browser while the dev server is running to see all 14 color options with live examples.
+**Gruvbox Dark:**
+```json
+{
+  "theme": {
+    "selectedTheme": "gruvbox-dark"
+  }
+}
+```
 
-Example: `http://localhost:4321/colors`
+## How It Works
 
-**Coming Soon:** An interactive theme selector will be added to the sidebar, allowing you to:
-- Preview all 14 themes instantly
-- Switch between themes with one click
-- Save your preference to localStorage
-- Copy theme name to add to `config.json` for permanent use
+1. **Build time**: `ThemeProvider.astro` reads the selected theme from `config.json` and injects CSS variables into the HTML
+2. **CSS Variables**: All colors are defined as CSS variables (`--bg-primary`, `--text-primary`, `--accent-primary`, etc.)
+3. **Consistent styling**: Components use these CSS variables, so changing the theme updates all colors site-wide
 
-## Base Theme Colors
+## CSS Variables
 
-The following Kanagawa colors are used regardless of your accent color choice:
+Each theme sets these CSS variables:
 
-- **Background:** `#1F1F28` (sumiInk1)
-- **Text:** `#DCD7BA` (fujiWhite)
-- **Secondary Text:** `#C8C093` (oldWhite)
-- **Code Blocks:** `#16161D` (sumiInk0)
+```css
+:root {
+  /* Background colors */
+  --bg-primary: ...;      /* Main background */
+  --bg-secondary: ...;    /* Cards, sidebar */
+  --bg-tertiary: ...;     /* Hover states */
+  --bg-dark: ...;         /* Code blocks */
 
-These create the signature dark, warm aesthetic inspired by "The Great Wave off Kanagawa" painting.
+  /* Text colors */
+  --text-primary: ...;    /* Main body text */
+  --text-secondary: ...;  /* Secondary text */
+  --text-muted: ...;      /* Very muted text */
 
-## Advanced Customization
+  /* Accent colors */
+  --accent-primary: ...;  /* Links, highlights */
+  --accent-hover: ...;    /* Hover states */
 
-If you want to create your own custom color palette:
+  /* Border colors */
+  --border-default: ...;
+  --border-hover: ...;
+}
+```
 
-1. Open `src/config/theme.ts`
-2. Add a new entry to the `colorPalettes` object:
+## Adding Custom Themes
+
+To create your own theme, edit `src/config/theme.ts`:
 
 ```typescript
-'my-custom-color': {
-  name: 'My Custom Color',
-  primary: '#your-hex-color',        // Main accent
-  primaryHover: '#your-hover-color',  // Hover state
-  description: 'Your description'
+'my-custom-theme': {
+  name: 'My Custom Theme',
+  description: 'Your description here',
+  background: '#your-bg-color',
+  backgroundAlt: '#your-alt-bg',
+  backgroundTertiary: '#your-tertiary-bg',
+  backgroundDark: '#your-dark-bg',
+  text: '#your-text-color',
+  textSecondary: '#your-secondary-text',
+  textMuted: '#your-muted-text',
+  accent: '#your-accent-color',
+  accentHover: '#your-accent-hover',
+  border: '#your-border-color',
+  borderHover: '#your-border-hover',
 },
 ```
 
-3. Update the `PaletteName` type to include your new palette
-4. Set `selectedPalette` to your new palette name
+Then set `"selectedTheme": "my-custom-theme"` in `config.json`.
 
 ## Typography
 
-The theme uses:
+The theme uses (not affected by color scheme):
 - **Base font size:** 20px
 - **Line height:** 1.75
 - **Font family:** System font stack (for performance)

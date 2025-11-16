@@ -5,11 +5,12 @@ A modern, fast portfolio website built with Astro, TypeScript, and Tailwind CSS.
 ## Features
 
 - ⚡ **Fast**: Built with Astro's Islands Architecture - ships minimal JavaScript
-- 🎨 **Dark/Light Mode**: Toggle between themes with persistent preference
-- 📝 **Blog**: Markdown-based blog with tags and reading time
+- 🎨 **7 Curated Themes**: Complete color schemes (Kanagawa, Tokyo Night, Nord, Gruvbox, Dracula, Monokai)
+- 📝 **Blog**: Markdown-based blog with tags and reading time (toggleable via config)
 - 🚀 **Projects Showcase**: Easy-to-update project cards with demos and GitHub links
-- 📱 **Responsive**: Mobile-first design that works on all devices
+- 📱 **Responsive**: Mobile-first design with sidebar navigation
 - 🔍 **SEO Ready**: Meta tags and semantic HTML for better search visibility
+- ⚙️ **Config-based**: Centralized configuration via `config.json`
 
 ## Getting Started
 
@@ -32,12 +33,49 @@ Visit `http://localhost:4321` to see your site.
 
 ## Customization
 
+### Site Configuration
+
+Edit `config.json` in the project root:
+
+```json
+{
+  "theme": {
+    "selectedTheme": "kanagawa-blue"
+  },
+  "site": {
+    "name": "Your Name",
+    "title": "Software Engineer",
+    "email": "your.email@example.com"
+  },
+  "social": {
+    "github": "https://github.com/yourusername",
+    "linkedin": "https://linkedin.com/in/yourusername",
+    "twitter": "https://twitter.com/yourusername"
+  },
+  "features": {
+    "blog": false
+  }
+}
+```
+
+**Available themes:**
+- `kanagawa-dark` - Natural earthy theme with green accents
+- `kanagawa-blue` - Soft blue with warm tones
+- `tokyo-night` - Deep blue with cyan accents
+- `gruvbox-dark` - Warm retro theme with orange accents
+- `nord` - Arctic bluish theme with frost accents
+- `dracula` - Purple theme with pink accents
+- `monokai` - Classic dark theme with lime accents
+
+See `THEME_CONFIG.md` for detailed theme documentation.
+
 ### Personal Information
 
 1. **Update placeholders** in the following files:
-   - `src/pages/index.astro` - Your name, bio, tagline
-   - `src/components/Footer.astro` - Social links and email
-   - `src/components/Header.astro` - Site name/logo
+   - `config.json` - Your name, email, social links
+   - `src/pages/index.astro` - Your bio and about section
+   - `src/components/Footer.astro` - Footer content
+   - `src/components/Sidebar.astro` - Site name/logo
 
 2. **Add your photo** (optional):
    - Place your photo in `public/` directory
@@ -76,17 +114,19 @@ tags: ["webdev", "javascript"]
 Your blog post content here...
 ```
 
-### Customizing Colors
+### Customizing Themes
 
-Edit the accent colors in `src/styles/global.css`:
+Change `theme.selectedTheme` in `config.json` to switch between complete color schemes:
 
-```css
-:root {
-  --accent: 59 130 246; /* Blue-500 RGB */
+```json
+{
+  "theme": {
+    "selectedTheme": "tokyo-night"
+  }
 }
 ```
 
-Or modify the Tailwind config for global theme changes.
+Each theme controls background colors, text colors, accent colors, and borders for a cohesive look. Restart the dev server after changing the theme.
 
 ## Deployment
 
@@ -135,9 +175,11 @@ All three offer free hosting with automatic deployments on git push.
 
 ```
 /
+├── config.json          # Site configuration (theme, features, info)
 ├── public/               # Static assets (images, favicon, etc.)
 ├── src/
 │   ├── components/      # Reusable UI components
+│   ├── config/          # Theme definitions
 │   ├── content/         # Content collections
 │   │   ├── blog/       # Blog posts (markdown)
 │   │   └── projects/   # Project data (markdown)
@@ -153,8 +195,8 @@ All three offer free hosting with automatic deployments on git push.
 
 - **Framework**: [Astro](https://astro.build)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com)
-- **Interactivity**: [React](https://react.dev) (for dark mode toggle)
-- **Deployment**: GitHub Pages / Vercel / Netlify
+- **Language**: TypeScript
+- **Deployment**: GitHub Pages (static output)
 
 ## Learn More
 
