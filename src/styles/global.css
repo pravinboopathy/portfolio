@@ -11,29 +11,12 @@
  */
 
 :root {
-  /* Background colors - set by theme */
-  --bg-primary: #1F1F28;
-  --bg-secondary: #2A2A37;
-  --bg-tertiary: #363646;
-  --bg-dark: #16161D;
-
-  /* Text colors - set by theme */
-  --text-primary: #DCD7BA;
-  --text-secondary: #C8C093;
-  --text-muted: #727169;
-
-  /* Accent colors - set by theme */
-  --accent-primary: #98BB6C;
-  --accent-hover: #76946A;
-
-  /* Border colors - set by theme */
-  --border-default: #2A2A37;
-  --border-hover: #363646;
-
   /* Typography - not theme-dependent */
   --font-base: 20px;
   --line-height: 1.75;
   --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+
+  /* Theme colors (background, text, accent, border) are injected by ThemeProvider.astro */
 }
 
 html {
