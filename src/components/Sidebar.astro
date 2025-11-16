@@ -50,13 +50,6 @@ const blogEnabled = config.features?.blog ?? false;
   <!-- Sidebar Navigation -->
   <nav id="sidebar" class="sidebar">
     <div class="sidebar-content">
-      <!-- Logo/Name -->
-      <div class="sidebar-header">
-        <a href="/" class="logo-link">
-          <span class="logo-text">Portfolio</span>
-        </a>
-      </div>
-
       <!-- Navigation Links -->
       <ul class="nav-list">
         <li>
@@ -181,29 +174,6 @@ const blogEnabled = config.features?.blog ?? false;
     display: flex;
     flex-direction: column;
     gap: 3rem;
-  }
-
-  /* Logo/Header */
-  .sidebar-header {
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--border-default);
-  }
-
-  .logo-link {
-    text-decoration: none;
-    color: var(--text-primary);
-    transition: color 0.2s ease;
-  }
-
-  .logo-link:hover {
-    text-decoration: none;
-    color: var(--accent-primary);
-  }
-
-  .logo-text {
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
   }
 
   /* Navigation List */
