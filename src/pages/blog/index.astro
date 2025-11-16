@@ -2,6 +2,12 @@
 import Layout from '../../layouts/Layout.astro';
 import Footer from '../../components/Footer.astro';
 import { getCollection } from 'astro:content';
+import config from '../../../config.json';
+
+// Return 404 if blog feature is disabled
+if (!config.features?.blog) {
+  return new Response(null, { status: 404, statusText: 'Not Found' });
+}
 
 const allPosts = (await getCollection('blog'))
   .filter((post) => !post.data.draft)

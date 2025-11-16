@@ -1,8 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
+import config from '../../../config.json';
 
 export async function getStaticPaths() {
+  // Don't generate blog post pages if blog feature is disabled
+  if (!config.features?.blog) {
+    return [];
+  }
+
   const blogEntries = await getCollection('blog');
   return blogEntries.map((entry) => ({
     params: { slug: entry.slug },

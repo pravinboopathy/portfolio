@@ -5,6 +5,8 @@
  * Desktop: Fixed left sidebar
  * Mobile: Collapsible hamburger menu
  */
+import config from '../../config.json';
+const blogEnabled = config.features?.blog ?? false;
 ---
 
 <div class="sidebar-container">
@@ -63,9 +65,11 @@
         <li>
           <a href="/#projects" class="nav-link">Projects</a>
         </li>
-        <li>
-          <a href="/blog" class="nav-link">Blog</a>
-        </li>
+        {blogEnabled && (
+          <li>
+            <a href="/blog" class="nav-link">Blog</a>
+          </li>
+        )}
         <li>
           <a href="/#contact" class="nav-link">Contact</a>
         </li>
