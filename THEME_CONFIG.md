@@ -2,7 +2,7 @@
 
 ## Overview
 
-Your portfolio uses a complete theming system with 7 curated dark themes. Each theme defines background colors, text colors, accent colors, and borders for a cohesive look.
+Your portfolio uses a complete theming system with 5 curated dark themes. Each theme defines background colors, text colors, accent colors, and borders for a cohesive look.
 
 ## Changing Your Theme
 
@@ -37,24 +37,6 @@ Same Kanagawa base with soft, muted blue accents. Calming and sophisticated.
 - Background: `#1F1F28` (dark charcoal)
 - Text: `#DCD7BA` (warm beige)
 - Accent: `#7E9CD8` (crystal blue)
-
-### Tokyo Night
-**Key:** `tokyo-night`
-
-Deep blue background with bright cyan accents. Modern and vibrant.
-
-- Background: `#1a1b26` (deep blue-black)
-- Text: `#c0caf5` (soft lavender white)
-- Accent: `#7aa2f7` (bright blue)
-
-### Gruvbox Dark
-**Key:** `gruvbox-dark`
-
-Warm, retro-inspired theme with earthy tones and orange/yellow accents.
-
-- Background: `#282828` (warm dark)
-- Text: `#ebdbb2` (cream)
-- Accent: `#fabd2f` (golden yellow)
 
 ### Nord
 **Key:** `nord`
@@ -94,20 +76,20 @@ Classic dark theme with bright yellow-green accents. Familiar to Sublime Text us
 }
 ```
 
-**Tokyo Night:**
+**Nord:**
 ```json
 {
   "theme": {
-    "selectedTheme": "tokyo-night"
+    "selectedTheme": "nord"
   }
 }
 ```
 
-**Gruvbox Dark:**
+**Dracula:**
 ```json
 {
   "theme": {
-    "selectedTheme": "gruvbox-dark"
+    "selectedTheme": "dracula"
   }
 }
 ```

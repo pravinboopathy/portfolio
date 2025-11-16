@@ -3,6 +3,12 @@
  *
  * This file controls the complete color scheme for the entire site.
  * Each theme defines background, text, and accent colors.
+ *
+ * Color palettes inspired by:
+ * - Kanagawa: https://github.com/rebelot/kanagawa.nvim (MIT)
+ * - Nord: https://www.nordtheme.com/
+ * - Dracula: https://draculatheme.com/
+ * - Monokai: https://monokai.pro/
  */
 
 export type ColorPalette = {
@@ -60,36 +66,6 @@ export const colorPalettes = {
     accentHover: '#9CABCA',
     border: '#2A2A37',
     borderHover: '#363646',
-  },
-  'tokyo-night': {
-    name: 'Tokyo Night',
-    description: 'Deep blue background with bright cyan accents',
-    background: '#1a1b26',
-    backgroundAlt: '#24283b',
-    backgroundTertiary: '#2f3549',
-    backgroundDark: '#16161e',
-    text: '#c0caf5',
-    textSecondary: '#a9b1d6',
-    textMuted: '#565f89',
-    accent: '#7aa2f7',
-    accentHover: '#7dcfff',
-    border: '#24283b',
-    borderHover: '#2f3549',
-  },
-  'gruvbox-dark': {
-    name: 'Gruvbox Dark',
-    description: 'Warm, retro-inspired theme with earthy tones',
-    background: '#282828',
-    backgroundAlt: '#3c3836',
-    backgroundTertiary: '#504945',
-    backgroundDark: '#1d2021',
-    text: '#ebdbb2',
-    textSecondary: '#d5c4a1',
-    textMuted: '#928374',
-    accent: '#fabd2f',
-    accentHover: '#fe8019',
-    border: '#3c3836',
-    borderHover: '#504945',
   },
   'nord': {
     name: 'Nord',
@@ -159,8 +135,6 @@ try {
  * Available themes:
  * - 'kanagawa-dark' (default) - Natural earthy theme
  * - 'kanagawa-blue' - Muted blue with warm tones
- * - 'tokyo-night' - Deep blue with cyan accents
- * - 'gruvbox-dark' - Warm retro theme
  * - 'nord' - Arctic bluish theme
  * - 'dracula' - Purple with pink accents
  * - 'monokai' - Classic dark theme
