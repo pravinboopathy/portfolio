@@ -11,21 +11,8 @@ const projects = (await getCollection('projects'))
 
 <Layout title="Your Name - Software Engineer">
   <div class="page-container">
-    <!-- Hero Section -->
-    <section class="hero">
-      <h1 class="hero-title">Hi, I'm Your Name</h1>
-      <p class="hero-subtitle">
-        Software Engineer building cool projects and sharing what I learn
-      </p>
-      <div class="hero-links">
-        <a href="#projects">View Projects</a>
-        <span class="separator">·</span>
-        <a href="/blog">Read Blog</a>
-      </div>
-    </section>
-
     <!-- About Section -->
-    <section class="section">
+    <section class="section first-section">
       <h2 class="section-title">About</h2>
       <div class="about-content">
         <p>
@@ -127,42 +114,15 @@ const projects = (await getCollection('projects'))
     padding: 3rem 2rem;
   }
 
-  /* Hero Section */
-  .hero {
-    padding: 6rem 0 8rem;
-    text-align: left;
-  }
-
-  .hero-title {
-    font-size: 3rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    color: var(--text-primary);
-    line-height: 1.2;
-  }
-
-  .hero-subtitle {
-    font-size: 1.5rem;
-    color: var(--text-secondary);
-    margin-bottom: 2rem;
-    max-width: 600px;
-  }
-
-  .hero-links {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    font-size: 1.125rem;
-  }
-
-  .hero-links .separator {
-    color: var(--text-muted);
-  }
-
   /* Section Styles */
   .section {
     padding: 4rem 0;
     border-top: 1px solid var(--border-default);
+  }
+
+  .section.first-section {
+    border-top: none;
+    padding-top: 2rem;
   }
 
   .section-title {
@@ -278,18 +238,6 @@ const projects = (await getCollection('projects'))
   @media (max-width: 768px) {
     .page-container {
       padding: 2rem 1.5rem;
-    }
-
-    .hero {
-      padding: 4rem 0 6rem;
-    }
-
-    .hero-title {
-      font-size: 2.25rem;
-    }
-
-    .hero-subtitle {
-      font-size: 1.25rem;
     }
 
     .section {

@@ -5,8 +5,6 @@
  * Desktop: Fixed left sidebar
  * Mobile: Collapsible hamburger menu
  */
-import ThemeSelector from './ThemeSelector';
-import { theme, colorPalettes } from '../config/theme';
 ---
 
 <div class="sidebar-container">
@@ -72,13 +70,6 @@ import { theme, colorPalettes } from '../config/theme';
           <a href="/#contact" class="nav-link">Contact</a>
         </li>
       </ul>
-
-      <!-- Theme Selector -->
-      <ThemeSelector
-        client:load
-        currentTheme={theme.name}
-        themes={colorPalettes}
-      />
     </div>
   </nav>
 </div>
