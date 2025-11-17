@@ -1,0 +1,28 @@
+---
+/**
+ * Font Provider Component
+ *
+ * Injects font configuration from fonts.ts into CSS variables.
+ * Also loads Google Fonts when needed.
+ * This component should be included in the Layout.astro <head>.
+ */
+import { selectedFonts, googleFontsUrls } from '../config/fonts';
+
+const cssContent = `:root{
+--font-body:${selectedFonts.body.stack};
+--font-heading:${selectedFonts.heading.stack};
+--font-code:${selectedFonts.code.stack};
+}`;
+---
+
+<!-- Load Google Fonts if needed -->
+{googleFontsUrls.length > 0 && (
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+)}
+{googleFontsUrls.map((url) => (
+  <link rel="stylesheet" href={url} />
+))}
+
+<!-- Inject font CSS variables -->
+<style is:global set:html={cssContent}></style>
