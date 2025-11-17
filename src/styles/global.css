@@ -14,8 +14,8 @@
   /* Typography - not theme-dependent */
   --font-base: 20px;
   --line-height: 1.75;
-  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 
+  /* Font stacks are injected by FontProvider.astro */
   /* Theme colors (background, text, accent, border) are injected by ThemeProvider.astro */
 }
 
@@ -26,10 +26,15 @@ html {
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  font-family: var(--font-family);
+  font-family: var(--font-body);
   font-size: var(--font-base);
   line-height: var(--line-height);
   transition: none; /* Remove transitions for single theme */
+}
+
+/* Headings use configurable heading font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
 }
 
 /* Global link styles - minimalist underline approach */
@@ -53,6 +58,7 @@ code {
   padding: 0.2rem 0.5rem;
   border-radius: 4px;
   font-size: 0.9em;
+  font-family: var(--font-code);
 }
 
 /* Selection */

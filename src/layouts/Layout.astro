@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import ThemeProvider from '../components/ThemeProvider.astro';
+import FontProvider from '../components/FontProvider.astro';
 import Sidebar from '../components/Sidebar.astro';
 
 interface Props {
@@ -29,6 +30,8 @@ const { title, description = 'Personal portfolio showcasing programming projects
 
     <!-- Theme configuration -->
     <ThemeProvider />
+    <!-- Font configuration -->
+    <FontProvider />
   </head>
   <body>
     <Sidebar />
