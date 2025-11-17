@@ -39,17 +39,25 @@ const { title, description = 'Personal portfolio showcasing programming projects
 </html>
 
 <style>
-  /* Main content area - offset for sidebar */
+  /* Main content area - offset for sidebar/tab bar */
   .main-content {
     margin-left: 0;
+    margin-bottom: 0;
     min-height: 100vh;
-    transition: margin-left 0.3s ease;
+    transition: margin-left 0.3s ease, margin-bottom 0.3s ease;
   }
 
   /* Desktop: offset for fixed sidebar */
   @media (min-width: 768px) {
     .main-content {
       margin-left: 220px;
+    }
+  }
+
+  /* Mobile: offset for fixed bottom tab bar */
+  @media (max-width: 767px) {
+    .main-content {
+      margin-bottom: 60px;
     }
   }
 </style>
