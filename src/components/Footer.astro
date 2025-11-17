@@ -1,12 +1,14 @@
 ---
+import { social } from '../config/social';
+
 const currentYear = new Date().getFullYear();
 
-// Placeholder social links - easy to update
+// Social links loaded from config.json
 const socialLinks = [
-  { name: 'GitHub', url: 'https://github.com/yourusername' },
-  { name: 'LinkedIn', url: 'https://linkedin.com/in/yourusername' },
-  { name: 'Twitter', url: 'https://twitter.com/yourusername' },
-  { name: 'Email', url: 'mailto:your.email@example.com' },
+  { name: 'GitHub', url: social.github },
+  { name: 'LinkedIn', url: social.linkedin },
+  { name: 'Twitter', url: social.twitter },
+  { name: 'Email', url: `mailto:${social.email}` },
 ];
 ---
 

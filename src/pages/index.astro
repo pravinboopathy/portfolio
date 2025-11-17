@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 import { getCollection } from 'astro:content';
+import { social } from '../config/social';
 
 const projects = (await getCollection('projects'))
   .filter((project) => !project.data.draft)
@@ -98,7 +99,7 @@ const projects = (await getCollection('projects'))
         I'm always interested in hearing about new opportunities, collaborations,
         or just having a chat about technology.
       </p>
-      <a href="mailto:your.email@example.com" class="contact-link">
+      <a href={`mailto:${social.email}`} class="contact-link">
         Send me an email →
       </a>
     </section>
