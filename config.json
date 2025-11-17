@@ -3,9 +3,9 @@
     "selectedTheme": "kanagawa-blue-white"
   },
   "fonts": {
-    "body": "system-ui",
-    "heading": "roboto",
-    "code": "jetbrains-mono"
+    "body": "merriweather",
+    "heading": "merriweather",
+    "code": "jetbrain-mono"
   },
   "social": {
     "email": "boopathypravin@gmail.com",
