@@ -12,21 +12,23 @@ const projects = (await getCollection('projects'))
 
 <Layout title="Pravin Boopathy">
   <div class="page-container">
+    <!-- Name Header -->
+    <header class="name-header">
+      <h1 class="name">Pravin Boopathy</h1>
+    </header>
+
     <!-- About Section -->
     <section class="section first-section">
       <h2 class="section-title">About</h2>
       <div class="about-content">
+        <p class="tagline">Platform engineer by day. Indie tool-builder by night.</p>
         <p>
-          I'm a passionate software engineer who loves building things and solving problems.
-          My interests span across web development, system design, and exploring new technologies.
+          Day job: cloud infrastructure at Epic Systems — Go, Kubernetes, on-call for things
+          that should never go down.
         </p>
         <p>
-          When I'm not coding, you'll find me learning about new frameworks, contributing to
-          open source, or writing about my experiences on this blog.
-        </p>
-        <p>
-          I'm always open to interesting conversations and collaboration opportunities. Feel
-          free to reach out!
+          Nights and weekends: macOS apps, AI experiments, and whatever I'm currently
+          nerd-sniped by. This site is where the side projects live.
         </p>
       </div>
     </section>
@@ -113,6 +115,25 @@ const projects = (await getCollection('projects'))
     max-width: 900px;
     margin: 0 auto;
     padding: 3rem 2rem;
+  }
+
+  /* Name Header */
+  .name-header {
+    padding-bottom: 1rem;
+  }
+
+  .name {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .tagline {
+    font-size: 1.125rem;
+    color: var(--text-secondary) !important;
+    margin-bottom: 2rem !important;
   }
 
   /* Section Styles */
